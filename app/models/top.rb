@@ -1,4 +1,5 @@
 class Top < ApplicationRecord
-  has_many :top_users
-  has_many :users, through: :users
+  has_many :topUsers
+  has_many :users, through: :topUsers
+  has_many :comments
 end
