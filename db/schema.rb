@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_19_043221) do
+ActiveRecord::Schema.define(version: 2019_12_19_051336) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "top_id"
@@ -22,13 +22,13 @@ ActiveRecord::Schema.define(version: 2019_12_19_043221) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "topUsers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "top_id"
-    t.bigint "user_id"
+  create_table "top_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["top_id"], name: "index_topUsers_on_top_id"
-    t.index ["user_id"], name: "index_topUsers_on_user_id"
+    t.bigint "top_id"
+    t.bigint "user_id"
+    t.index ["top_id"], name: "index_top_users_on_top_id"
+    t.index ["user_id"], name: "index_top_users_on_user_id"
   end
 
   create_table "tops", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -57,6 +57,6 @@ ActiveRecord::Schema.define(version: 2019_12_19_043221) do
 
   add_foreign_key "comments", "tops"
   add_foreign_key "comments", "users"
-  add_foreign_key "topUsers", "tops"
-  add_foreign_key "topUsers", "users"
+  add_foreign_key "top_users", "tops"
+  add_foreign_key "top_users", "users"
 end

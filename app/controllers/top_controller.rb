@@ -6,12 +6,14 @@ class TopController < ApplicationController
   def show
     @eachTopic = Top.find(params[:id]);
     @comment = Comment.new;
+    @top = TopUser.new
     @user = current_user.id
   end
 
   def create 
     @comment = Comment.new(comment_params)
     if @comment.save
+      TopUser.create(top_id:1,user_id:1)
       redirect_to top_index_path
     end
   end
